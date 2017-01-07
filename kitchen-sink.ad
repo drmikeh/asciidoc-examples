@@ -1,0 +1,655 @@
+# AsciiDoc Kitchen Sink
+Author's Name <drmikeh@gmail.com>
+
+A demonstration of AsciiDoc features.
+
+NOTE: The abstract, preface, appendix, bibliography, glossary and
+index section titles are significant ('specialsections').
+
+:numbered!:
+[abstract]
+## Example Abstract
+This document contains all of the AsciiDoc features I could find.
+
+:numbered:
+
+## Footnotes
+Here is an example footnote.
+footnote:[An example footnote.]
+indexterm:[Example index entry]
+
+## Paragraphs
+
+.Optional Title
+
+A simple paragraph with an optional title. Paragraphs can be
+split across lines. Paragraphs are separated by a blank line.
+
+Another paragraph.
+
+.A Literal Paragraph
+
+  This is a literal paragraph. Literal paragraphs must be indented.
+
+.JavaScript Source
+
+[source,javascript]
+const fact = (n) => n <= 1 ? 1 : n * fact(n-1);
+
+Another simple paragraph.
+
+## Notices
+
+.Paragraph as a Note with Optional Title
+NOTE: This is an example single-paragraph note.
+
+---
+
+TIP: Tip.
+
+---
+
+IMPORTANT: Important.
+
+---
+
+WARNING: Warning.
+
+---
+
+CAUTION: Caution.
+
+---
+
+
+## Blocks
+
+.*Listing* Block
+----
+Use: code or file listings
+----
+
+---
+
+.*Source* Block
+[source,javascript]
+----
+// Use: highlight code listings
+// (require `source-highlight` or `pygmentize`)
+function add(a, b) {
+  return a + b;
+}
+----
+
+---
+
+.*Sidebar* Block
+****
+Use: sidebar notes :-)
+****
+
+---
+
+.*Example* Block
+==========================
+Use: examples :-)
+
+Default caption "Example:"
+can be changed using
+
+ [caption="Custom: "]
+
+before example block.
+==========================
+
+---
+
+.*NOTE* Block
+[NOTE]
+===============================
+Use: multi-paragraph notes.
+===============================
+
+---
+
+There is a comment below.
+
+////
+*Comment* block
+
+Use: hide comments
+////
+
+The comment above is hidden in the output.
+
+---
+
+++++
+*Passthrough* Block
+<p>
+Use: backend-specific markup like
+<table border="1">
+  <tr><td>1</td><td>2</td><td>3</td></tr>
+  <tr><td>4</td><td>5</td><td>6</td></tr>
+  <tr><td>7</td><td>8</td><td>9</td></tr>
+</table>
+++++
+
+---
+
+.*Literal* Block
+ Use: workaround when literal
+ paragraph (indented) like
+   1. First.
+   2. Second.
+ incorrectly processed as list.
+
+---
+
+.*Quote* Block
+[quote, Sir Arthur Conan Doyle, The Adventures of Sherlock Holmes]
+____
+As he spoke there was the sharp sound of horses' hoofs and
+grating wheels against the curb, followed by a sharp pull at the
+bell. Holmes whistled.
+
+"A pair, by the sound," said he. "Yes," he continued, glancing
+out of the window. "A nice little brougham and a pair of
+beauties. A hundred and fifty guineas apiece. There's money in
+this case, Watson, if there is nothing else."
+____
+
+---
+
+[NOTE]
+.A NOTE admonition block
+=====================================================================
+Qui in magna commodo, est labitur dolorum an. Est ne magna primis
+adolescens.
+
+. Fusce euismod commodo velit.
+. Vivamus fringilla mi eu lacus.
+  .. Fusce euismod commodo velit.
+  .. Vivamus fringilla mi eu lacus.
+. Donec eget arcu bibendum
+  nunc consequat lobortis.
+=====================================================================
+
+---
+
+## Text
+
+You can force +
+a line break.
+
+---
+
+Text can be normal, _italic_, *bold*, and +mono+.
+
+Quotes can be ''double quoted'' or 'single quoted'.
+
+Quotes can be "double quoted" or 'single quoted'.
+
+Text can be normal, ^superscripted^, and ~subscripted~.
+
+---
+
+You can use backquotes for commands: `ls -als`.
+
++mono *bold*+
+
+`passthru *bold*`
+
+Path: `/some/filez.txt`, `.b`
+
+[red]#red text# [yellow-background]#on yellow#
+[big]#large# [red yellow-background big]*all bold*
+
+Chars: n__i__**b**++m++[red]##r##
+
+// A comment
+
+Special chars: (C) (R) (TM) -- ... -> <- => <= &#182;
+
+Escaped:
+\_italic_, +++_italic_+++,
+t\__e__st, +++t__e__st+++,
++++<b>bold</b>+++, $$<b>normal</b>$$
+\&#182;
+\`not single quoted'
+\`\`not double quoted''
+
+
+## Links
+
+[[anchor-1]]
+Paragraph or block 1.
+
+anchor:anchor-2[]
+Paragraph or block 2.
+
+<<anchor-1>>,
+<<anchor-1,First anchor>>,
+xref:anchor-2[],
+xref:anchor-2[Second anchor].
+
+link:asciidoc[This document]
+link:asciidoc.html[]
+link:/index.html[This site root]
+
+http://google.com
+http://google.com[Google Search]
+mailto:root@localhost[email admin]
+
+## Images
+
+First home
+image:images/icons/home.png[]
+, second home
+image:images/icons/home.png[Alt text]
+.
+
+.Block image
+image::images/tiger.png[]
+
+image::images/missing.png[Tiger]
+
+.Thumbnail linked to full image
+image:/images/640-screen2.gif[
+"My screenshot",width=128,
+link="/images/640-screen2.gif"]
+
+## Includes
+
+This is example how files
+can be included.
+It's commented because
+there no such files. :)
+
+include::footer.txt[]
+
+[source,javascript]
+----
+include::hello.js[]
+----
+
+## Lists
+
+.Bulleted
+* bullet 1
+* bullet 2
+  - bullet 2a
+  - bullet 2b
+* bullet 3
+** bullet 3a
+*** bullet 3a1
+*** bullet 3a2
+** bullet 3b
+* bullet 4
+  - bullet 4a
+    * bullet 4a1
+    * bullet 4a2
+  - bullet 4b
+    * bullet 4b1
+    * bullet 4b2
+
+---
+
+.Bulleted 2
+- bullet
+  * bullet
+
+---
+
+.Ordered
+. number
+. number
+  .. letter
+  .. letter
+. number
+.. loweralpha
+.. loweralpha
+... lowerroman
+... lowerroman
+.... upperalpha
+.... upperalpha
+..... upperroman
+..... upperroman
+.... upperalpha
+... lowerroman
+.. loweralpha
+. number
+
+---
+
+.Ordered 2
+a. letter
+b. letter
+   .. letter2
+   .. letter2
+       .  number
+       .  number
+           1. number2
+           2. number2
+           3. number2
+           4. number2
+       .  number
+   .. letter2
+c. letter
+
+---
+
+.Labeled
+Term 1::
+    Definition 1
+Term 2::
+    Definition 2
+    Term 2.1;;
+        Definition 2.1
+    Term 2.2;;
+        Definition 2.2
+Term 3::
+    Definition 3
+Term 4:: Definition 4
+Term 4.1::: Definition 4.1
+Term 4.2::: Definition 4.2
+Term 4.2.1:::: Definition 4.2.1
+Term 4.2.2:::: Definition 4.2.2
+Term 4.3::: Definition 4.3
+Term 5:: Definition 5
+
+---
+
+.Labeled 2
+Term 1;;
+    Definition 1
+    Term 1.1::
+        Definition 1.1
+
+---
+
+[horizontal]
+.Labeled horizontal
+Term 1:: Definition 1
+Term 2:: Definition 2
+[horizontal]
+    Term 2.1;;
+        Definition 2.1
+    Term 2.2;;
+        Definition 2.2
+Term 3::
+    Definition 3
+Term 4:: Definition 4
+[horizontal]
+Term 4.1::: Definition 4.1
+Term 4.2::: Definition 4.2
+[horizontal]
+Term 4.2.1:::: Definition 4.2.1
+Term 4.2.2:::: Definition 4.2.2
+Term 4.3::: Definition 4.3
+Term 5:: Definition 5
+
+---
+
+[qanda]
+.Q&A
+Question 1::
+    Answer 1
+Question 2:: Answer 2
+
+---
+
+.Indent is optional
+- bullet
+    * another bullet
+        1. number
+        .  again number
+            a. letter
+            .. again letter
+
+.. letter
+. number
+
+* bullet
+- bullet
+
+---
+
+.Break two lists
+. number
+. number
+
+Independent paragraph break list.
+
+. number
+
+.Header break list too
+. number
+
+--
+. List block define list boundary too
+. number
+. number
+--
+
+--
+. number
+. number
+--
+
+---
+
+.Continuation
+- bullet
+continuation
+. number
+  continuation
+* bullet
+
+  literal continuation
+
+.. letter
++
+Non-literal continuation.
++
+----
+any block can be
+
+included in list
+----
++
+Last continuation.
+
+---
+
+.List block allow sublist inclusion
+- bullet
+  * bullet
++
+--
+    - bullet
+      * bullet
+--
+  * bullet
+- bullet
+  . number
+    .. letter
++
+--
+      . number
+        .. letter
+--
+    .. letter
+  . number
+
+
+## Tables
+
+.A Simple Table
+[width="15%"]
+|=======
+|1 |2 |A
+|3 |4 |B
+|5 |6 |C
+|=======
+
+.Table with title, header and footer
+[width="40%",frame="topbot",options="header,footer"]
+|======================
+|Column 1 |Column 2
+|1        |Item 1
+|2        |Item 2
+|3        |Item 3
+|6        |Three items
+|======================
+
+.Columns formatted with strong, monospaced and emphasis styles
+[width="50%",cols=">s,^2m,^2e",frame="topbot",options="header,footer"]
+|==========================
+|      2+|Columns 2 and 3
+|1       |Item 1  |Item 1
+|2       |Item 2  |Item 2
+|3       |Item 3  |Item 3
+|4       |Item 4  |Item 4
+|footer 1|footer 2|footer 3
+|==========================
+
+.A table with externally sourced CSV data
+[format="csv",cols="^1,4*2",options="header"]
+|===================================================
+ID,Customer Name,Contact Name,Customer Address,Phone
+include::customers.csv[]
+|===================================================
+
+.A table with DSV Data
+[width="70%",format="dsv"]
+|====================================
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh
+bin:x:2:2:bin:/bin:/bin/sh
+sys:x:3:3:sys:/dev:/bin/sh
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/bin/sh
+|====================================
+
+.Cell spans, alignments and styles
+[cols="e,m,^,>s",width="25%"]
+|============================
+|cell1 >s|cell2 |cell3 |cell4
+^|cell5 2.2+^.^|cell6 .3+<.>m|cell7
+^|cell8
+|cell9 2+>|cell10
+|============================
+
+
+.Horizontal and vertical source data
+[width="80%",cols="3,^2,^2,10",options="header"]
+|=========================================================
+|Date |Duration |Avg HR |Notes
+
+|22-Aug-08 |10:24 | 157 |
+Worked out MSHR (max sustainable heart rate) by going hard
+for this interval.
+
+|22-Aug-08 |23:03 | 152 |
+Back-to-back with previous interval.
+
+|24-Aug-08 |40:00 | 145 |
+Moderately hard interspersed with 3x 3min intervals (2min
+hard + 1min really hard taking the HR up to 160).
+
+|=========================================================
+
+NOTE: Short cells can be entered horizontally, longer cells vertically. The default behavior is to strip leading and trailing blank lines within a cell. These characteristics aid readability and data entry.
+
+.Default and verse styles
+[cols=",^v",options="header"]
+|===================================
+|Default paragraphs |Centered verses
+2*|Per id.
+
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+|===================================
+
+.Horizontal and vertical headings
+[cols="h,4*",options="header",width="50%"]
+|==================================
+|      |West |Central |East | Total
+|Q1    |270  |292     |342  | 904
+|Q2    |322  |276     |383  | 981
+|Q3    |298  |252     |274  | 824
+|Q4    |344  |247     |402  | 993
+|==================================
+
+---
+
+.Multiline cells, row/col span
+|====
+|Date |Duration |Avg HR |Notes
+
+|22-Aug-08 .2+^.^|10:24 | 157 |
+Worked out MSHR (max sustainable
+heart rate) by going hard
+for this interval.
+
+|22-Aug-08 | 152 |
+Back-to-back with previous interval.
+
+|24-Aug-08 3+^|none
+
+|====
+
+---
+
+.AsciiDoc style in first column, Literal in second
+[cols="asciidoc,literal",options="header",grid="cols"]
+|==================================
+|Output markup |AsciiDoc source
+2*|
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+
+-----------------------------------
+Consul *necessitatibus* per id,
+consetetur, eu pro everti postulant
+homero verear ea mea, qui.
+-----------------------------------
+
+.Code filter example
+[source,python]
+-----------------------------------
+''' A multi-line
+    comment.'''
+def sub_word(mo):
+   ''' Single line comment.'''
+    word = mo.group('word')
+    if word in keywords[language]:
+        return quote + word + quote
+    else:
+        return word
+-----------------------------------
+
+- Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit.
+  * Fusce euismod commodo velit.
+  * Qui in magna commodo, est labitur
+    dolorum an. Est ne magna primis
+    adolescens. Sit munere ponderum
+    dignissim et. Minim luptatum et vel.
+  * Vivamus fringilla mi eu lacus.
+  * Donec eget arcu bibendum nunc
+    consequat lobortis.
+- Nulla porttitor vulputate libero.
+  . Fusce euismod commodo velit.
+  . Vivamus fringilla mi eu lacus.
+
+|==================================
+
+WARNING: I could not get this to work.
